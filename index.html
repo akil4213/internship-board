@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Discover internships, explore career opportunities and develop your skills.">
+
+    <title>InternHub - Find Your Dream Internship</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="main-header">
+
+        <nav class="navbar" aria-label="Main navigation">
+
+            <a href="#" class="logo">
+                Intern<span>Hub.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#internship-heading">Internships</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+
+            <a href="#internship-heading" class="nav-button">
+                Find Internship
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-tag">
+                    YOUR CAREER STARTS HERE
+                </span>
+
+                <h1>
+                    Discover Your
+                    <span>Dream Internship</span>
+                </h1>
+
+                <p>
+                    Explore exciting opportunities, gain real-world
+                    experience and build the skills for your future.
+                </p>
+
+                <a href="#internship-heading" class="primary-button">
+                    Explore Opportunities →
+                </a>
+
+                <div class="hero-stats">
+
+                    <div>
+                        <h3>8+</h3>
+                        <p>Opportunities</p>
+                    </div>
+
+                    <div>
+                        <h3>4</h3>
+                        <p>Career Domains</p>
+                    </div>
+
+                    <div>
+                        <h3>100%</h3>
+                        <p>Career Focused</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Search Section -->
+        <section class="search-wrapper">
+
+            <div class="search-heading">
+                <span>FIND YOUR OPPORTUNITY</span>
+                <h2>Explore Internships</h2>
+                <p>Find the right opportunity to start your career.</p>
+            </div>
+
+            <div class="search-box">
+
+                <div class="search-field">
+
+                    <label for="searchInput">
+                        Search by role or company
+                    </label>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="e.g. Python Developer..."
+                    >
+
+                </div>
+
+                <div class="filter-field">
+
+                    <label for="domainFilter">
+                        Select Domain
+                    </label>
+
+                    <select id="domainFilter">
+
+                        <option value="all">All Domains</option>
+
+                        <option value="Web Development">
+                            Web Development
+                        </option>
+
+                        <option value="Python">
+                            Python
+                        </option>
+
+                        <option value="Data Science">
+                            Data Science
+                        </option>
+
+                        <option value="UI/UX Design">
+                            UI/UX Design
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Internship Listings -->
+        <section class="internship-section"
+                 aria-labelledby="internship-heading">
+
+            <div class="section-heading">
+
+                <div>
+                    <span>CAREER OPPORTUNITIES</span>
+                    <h2 id="internship-heading">
+                        Latest Internships
+                    </h2>
+                    <p>Explore opportunities that match your interests.</p>
+                </div>
+
+                <div class="result-badge" id="resultCount" aria-live="polite">
+                    Loading internships...
+                </div>
+
+            </div>
+
+
+            <!-- JavaScript renders cards here -->
+            <div id="internshipList" class="internship-list">
+
+            </div>
+
+
+            <!-- Empty State -->
+            <div id="emptyMessage" class="message-box" role="status" hidden>
+
+                <h3>No internships found!</h3>
+
+                <p>
+                    Try another search or select a different domain.
+                </p>
+
+            </div>
+
+
+            <!-- Error State -->
+            <div id="errorMessage" class="message-box error-box"
+                 role="alert" hidden>
+
+                <h3>Something went wrong!</h3>
+
+                <p>Please refresh the page and try again.</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+
+            <div class="about-content">
+
+                <span>ABOUT INTERNHUB</span>
+
+                <h2>
+                    Start Small.
+                    <br>
+                    Dream Big.
+                </h2>
+
+                <p>
+                    InternHub helps students discover internship
+                    opportunities, develop professional skills and
+                    take the first step towards successful careers.
+                </p>
+
+                <a href="#internship-heading" class="about-button">
+                    Explore Internships →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+    
+<!-- Application Form Dialog -->
+<dialog id="applicationDialog" class="application-dialog">
+
+    <div class="dialog-header">
+        <div>
+            <span class="form-tag">INTERNSHIP APPLICATION</span>
+            <h2>Apply for Internship</h2>
+        </div>
+
+        <button type="button"
+                id="closeDialog"
+                class="close-button"
+                aria-label="Close application form">
+            &times;
+        </button>
+    </div>
+
+    <p class="selected-internship">
+        Applying for:
+        <strong id="selectedInternship"></strong>
+    </p>
+
+    <form id="applicationForm">
+
+        <label for="studentName">Full Name</label>
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Enter your full name"
+            required
+            minlength="2"
+        >
+
+        <label for="studentEmail">Email Address</label>
+        <input
+            type="email"
+            id="studentEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+        <label for="studentSkills">Your Skills</label>
+        <textarea
+            id="studentSkills"
+            placeholder="HTML, CSS, JavaScript..."
+            rows="4"
+            required
+            minlength="2"
+        ></textarea>
+
+        <button type="submit" class="submit-button">
+            Submit Application →
+        </button>
+
+    </form>
+
+    <div id="applicationSuccess" hidden role="status">
+
+        <h3>Application Submitted!</h3>
+
+        <p>
+            Your demo application has been completed successfully.
+        </p>
+
+        <button
+            type="button"
+            class="submit-button"
+            onclick="applicationDialog.close()">
+            Done
+        </button>
+
+    </div>
+
+</dialog>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <a href="#" class="footer-logo">
+            Intern<span>Hub.</span>
+        </a>
+
+        <p>
+            Building skills. Creating opportunities. Shaping futures.
+        </p>
+
+        <p class="copyright">
+            © 2026 InternHub. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- IMPORTANT: Keep these script connections -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
